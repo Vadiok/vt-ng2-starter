@@ -1,0 +1,29 @@
+doctype html
+html(lang="ru")
+
+	head
+		title Angular 2 Test
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+		link(
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.1/css/uikit.min.css"
+			integrity="sha256-ZRu2uvT+IMWj7ooDbV50SFSrn3Zm3ewBc9s4mye4G58="
+			crossorigin="anonymous"
+		)
+
+	body
+		.uk-container.uk-container-center.uk-margin-top.uk-margin-large-bottom
+			.uk-grid
+				.uk-width-1-1
+					h1 Тест приложения на Angular 2
+					p Текст перед приложением
+					hr
+					angular-test-app Загрузка...
+					hr
+					p Текст после приложения
+
+		script(src="vendor/core.js/client/shim.min.js")
+		script(src="vendor/zone.js/dist/zone.min.js")
+		script(src="vendor/reflect-metadata/Reflect.js")
+		script(src="js/script.min.js")
