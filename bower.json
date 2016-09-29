@@ -1,18 +1,18 @@
 {
-  "name": "vt-ng2-starter",
-  "description": "Starter pack for Angular2",
-  "main": "gulpfile.js",
-  "authors": [
-    "Vlad Tokarev <vlad@tokarev.tk>"
-  ],
-  "license": "UNLICENSED",
-  "private": true,
-  "ignore": [
-    "**/.*"
-  ],
-  "dependencies": {
-    "core.js": "*",
-    "reflect-metadata": "*",
-    "zone.js": "https://github.com/angular/zone.js.git#*"
-  }
+	"name": "vt-ng2-starter",
+	"description": "Starter pack for Angular2",
+	"main": "gulpfile.js",
+	"authors": [
+		"Vlad Tokarev <vlad@tokarev.tk>"
+	],
+	"license": "UNLICENSED",
+	"private": true,
+	"ignore": [
+		"**/.*"
+	],
+	"dependencies": {
+		"core.js": "*",
+		"reflect-metadata": "*",
+		"zone.js": "https://github.com/angular/zone.js.git#*"
+	}
 }
