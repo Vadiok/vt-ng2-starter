@@ -77,7 +77,7 @@ gulp.task(helper.cfg("ts.tasks.clean", "ts:clean"), clean);
 var watch = function(useCompression) {
 	var files = helper.dir.source(helper.cfg("ts.sourceDir", "script")) + "*.ts";
 	console.log(helper.cfg("ts.tasks.watch", "ts:watch") + " :: watching " + files);
-	var taskName = useCompression ? helper.cfg("ts.tasks.compile", "ts") : helper.cfg("ts.tasks.compileNonMinified", "ts:unc")
+	var taskName = useCompression ? helper.cfg("ts.tasks.compile", "ts") : helper.cfg("ts.tasks.compileNonMinified", "ts:unc");
 	return gulp.watch([files], [taskName]);
 };
 var watchWithCompression = function () {
