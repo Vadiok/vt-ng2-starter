@@ -6,7 +6,7 @@
 
 * ``npm i``
 * ``bower i``
-* ``npm run typings i``
+* ``npm run typings i`` или ``typings i``, если ``typings`` установлен глобально
 * ``gulp ts`` или ``gulp ts:watch`` для компилияции с минификацией (долго)
 * ``gulp ts:unc`` или ``gulp ts:unc:watch`` для компилияции без минификации (использовать во время разработки, при этом ``srcript.min.js`` также создается, но не минифицируется)
 * ``pug ts`` или ``pug ts:watch``
