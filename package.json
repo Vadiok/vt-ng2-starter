@@ -22,6 +22,7 @@
     "gulp-uglify": "*",
     "ts-loader": "*",
     "typescript": "*",
+    "typings": "*",
     "webpack-stream": "*",
     "@angular/common": "*",
     "@angular/compiler": "*",

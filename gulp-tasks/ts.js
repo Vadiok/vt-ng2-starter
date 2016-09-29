@@ -17,7 +17,7 @@ var tsc        = require('gulp-tsc');
 var helper = require("./common");
 
 
-var compile = function() {
+var compile = function(useCompression) {
 	var sourceFileName = helper.cfg("ts.mainFile", "main");
 	var sourceFile = helper.dir.source(helper.cfg("ts.sourceDir", "script")) + sourceFileName + ".ts";
 	var tsConfigFile = helper.dir.source(helper.cfg("ts.sourceDir", "script")) + "tsconfig.json";
@@ -44,13 +44,20 @@ var compile = function() {
 			gulp
 				.src(resultDir + "/" + resultFileName + ".js")
 				.pipe(sourceMaps.init())
-				.pipe(uglify())
+				.pipe(gulpIf(useCompression, uglify()))
 				.pipe(rename(resultFileName + ".min.js"))
 				.pipe(sourceMaps.write(helper.cfg("ts.sourceMapDir", ".")))
 				.pipe(gulp.dest(resultDir));
 		});
 };
-gulp.task(helper.cfg("ts.tasks.compile", "ts"), compile);
+var compileWithCompression = function () {
+	compile(true);
+};
+var compileWithoutCompression = function () {
+	compile(false);
+};
+gulp.task(helper.cfg("ts.tasks.compile", "ts"), compileWithCompression);
+gulp.task(helper.cfg("ts.tasks.compileNonMinified", "ts:unc"), compileWithoutCompression);
 
 var clean = function() {
 	var buildDir = helper.dir.build(helper.cfg("js.buildDir", "js"));
@@ -67,9 +74,17 @@ var clean = function() {
 };
 gulp.task(helper.cfg("ts.tasks.clean", "ts:clean"), clean);
 
-var watch = function() {
+var watch = function(useCompression) {
 	var files = helper.dir.source(helper.cfg("ts.sourceDir", "script")) + "*.ts";
 	console.log(helper.cfg("ts.tasks.watch", "ts:watch") + " :: watching " + files);
-	return gulp.watch([files], [helper.cfg("ts.tasks.compile", "ts")]);
+	var taskName = useCompression ? helper.cfg("ts.tasks.compile", "ts") : helper.cfg("ts.tasks.compileNonMinified", "ts:unc")
+	return gulp.watch([files], [taskName]);
 };
-gulp.task(helper.cfg("ts.tasks.watch", "ts:watch"), watch);
+var watchWithCompression = function () {
+	watch(true);
+};
+var watchWithoutCompression = function () {
+	watch(false);
+};
+gulp.task(helper.cfg("ts.tasks.watch", "ts:watch"), watchWithCompression);
+gulp.task(helper.cfg("ts.tasks.watchNonMinified", "ts:unc:watch"), watchWithoutCompression);

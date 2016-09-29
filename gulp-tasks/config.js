@@ -21,9 +21,11 @@ config.tpl = {
 // TypeScript config
 config.ts = {
 	tasks: {
-		compile: "ts",
-		clean:   "ts:clean",
-		watch:   "ts:watch"
+		compile:            "ts",
+		compileNonMinified: "ts:unc",
+		clean:              "ts:clean",
+		watch:              "ts:watch",
+		watchNonMinified:   "ts:unc:watch"
 	},
 	sourceDir:    "script",
 	mainFile:     "main",
