@@ -33,7 +33,24 @@ var dirMaker = {
 	build: function(path) { return this.dir(cfg("common.buildDir", "dist") + "/" + path); }
 };
 
+var mergeOptions = function (options, defaultOptions) {
+	var optionValue = function(key, defaultValue) {
+		if (typeof options === "object" && typeof options[key] !== "undefined") {
+			return options[key];
+		}
+		return defaultValue;
+	};
+	var result = {};
+	for (var key in defaultOptions) {
+		if (defaultOptions.hasOwnProperty(key)) {
+			result[key] = optionValue(key, defaultOptions[key]);
+		}
+	}
+	return result;
+};
+
 module.exports = {
 	cfg: cfg,
-	dir: dirMaker
+	dir: dirMaker,
+	mergeOptions: mergeOptions
 };
