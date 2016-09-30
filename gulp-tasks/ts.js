@@ -28,7 +28,7 @@ var compile = function(useCompression) {
 		.src(sourceFile)
 		.pipe(gulpIf(treatImports, webpack({
 			resolve: {extensions: ["", ".js", ".ts", ".tsx"]},
-			module: {loaders: [{test: /\.tsx?$/, loader: "ts-loader", exclude: "node_modules"}]},
+			module: {loaders: [{test: /\.tsx?$/, loader: "ts-loader"}]},
 			ts: {configFileName: tsConfigFile}
 		})))
 		.pipe(gulpIf(treatImports, rename(resultFileName + ".js")))
