@@ -36,6 +36,7 @@
 * ``@angular/platform-browser-dynamic``
 * ``rxjs``
 * ``symbol-observable``
+* ``zone.js``
 
 Для работы скрипта приложения
 * ``core.js``
